@@ -14,6 +14,6 @@ Author: AndHol996
 I would like to acknowledge my teacher, N. Sanka, and TA, V. Reddy for assistance during examples in class.
 
 ## References 
-*Accessing Value Inside Python Nested Dictionaries* by reshmah, accessed on 8/29/2024. [Link to article](<https://www.geeksforgeeks.org/accessing-value-inside-python-nested-dictionaries/>)
+*Accessing Value Inside Python Nested Dictionaries* by reshmah on geeksforgeeks.org, accessed on 8/29/2024. [Link to article](<https://www.geeksforgeeks.org/accessing-value-inside-python-nested-dictionaries/>)
 ### Code Sourcing and Influences
 The code that was sourced and gave inflluenced to this program are from the OSU AI Bootcamp and said sourcing and acknowledgement of influence are marked in comments on lines 134, 154, 178, 219, and 234.
