@@ -104,7 +104,8 @@ while place_order:
                     for key2, value2 in value.items():
                         num_item_spaces = 24 - len(key + key2) - 3
                         item_spaces = " " * num_item_spaces
-                        print(f"{i}      | {key} - {key2}{item_spaces} | ${value2}")
+                        print(f"{i}      | {key} - {key2}{item_spaces} |
+                               ${value2}")
                         menu_items[i] = {
                             "Item name": key + " - " + key2,
                             "Price": value2
@@ -127,58 +128,63 @@ while place_order:
             
             # 3. Check if the customer typed a number
             if menu_selection.isdigit():
-                
+
                 # Convert the menu selection to an integer
                 int(menu_selection)
-
+                #Code influenced by starter code on current lines 86 and 89
                 # 4. Check if the menu selection is in the menu items
                 if int(menu_selection) in menu_items.keys():
                     # Store the item name as a variable
                     item_selected=menu_items[int(menu_selection)]["Item name"]
 
                     # Ask the customer for the quantity of the menu item
-                    quantity=input(f"How many do you want?")
+                    quantity=input(f"How many would you like to order?" )
 
                     # Check if the quantity is a number, default to 1 if not
                     if quantity.isdigit()>=1:
-                        print(f"you chose {quantity}")
+                        print(f"You chose {quantity}")
 
                     else:
                         quantity=1
                         print ("Invalid input. Defaulted to 1")
-
+                    # Lines 152-155 influenced by https://www.geeksforgeeks.org/accessing-value-inside-python-nested-dictionaries/
                     # Add the item name, price, and quantity to the order list                    
-                    order_item={"Item": item_selected 
-                                , "Price": menu_items[float(menu_selection)]["Price"]
+                    order_item={"Item name": item_selected 
+                                , "Price": menu_items[float(menu_selection)]
+                                ["Price"]
                                 , "Quantity": int(quantity)}
+                    
+                    # Adding order to order list
                     order.append(order_item)
 
                     # Tell the customer that their input isn't valid
                 else:
-                    print("You didn't select an item")
-
+                    print("Sorry! Your input wasn't valid")
             # Tell the customer they didn't select a menu option
             else:
-                print("You didn't select an appropriate number.")
+                print("You didn't select an appropriate number.")       
         else:
             # Tell the customer they didn't select a menu option
-            print(" You did not select was not a menu option.")
-    else:
+            print(f"{menu_category} was not a menu option.")
+    else: 
         # Tell the customer they didn't select a number
-        print("You didn't select a menu section.")
+        print("You didn't select a number.")
 
     while True:
         # Ask the customer if they would like to order anything else
-        keep_ordering = input("Would you like to keep ordering? (Y)es or (N)o ")
+        keep_ordering= input("Would you like to keep ordering? (Y)es or (N)o ")
 
         # 5. Check the customer's input. 
-        #Using code from 02-Ins_Match_Case
+        #Sourced code from Week2-Lesson3-02-Ins_Match_Case lines 52-70
         match keep_ordering.lower():
-            case 'y':
+            
+            # Yes continue order
+            case 'y': 
                 # Keep ordering
                 place_order = True
                 # Exit the keep ordering question loop
                 break
+            # No, finish order
             case 'n':
                 # Complete the order
                 place_order = False
@@ -188,15 +194,16 @@ while place_order:
                 # Exit the keep ordering question loop
                 break
             # Customer typed an invalid input
-            case _:
+            case _: 
                 # Tell the customer to try again
                 print("I didn't understand your response. Please try again.")
 
 # Print out the customer's order
 print("This is what we are preparing for you.\n")
 
-# Uncomment the following line to check the structure of the order
+# Uncomment the following line to check the structure of the order #Checked!
 #print(order)
+#Checked!
 
 print("Item name                 | Price  | Quantity")
 print("--------------------------|--------|----------")
@@ -204,26 +211,28 @@ print("--------------------------|--------|----------")
 # 6. Loop through the items in the customer's order
 for i in order:
     
-    # 7. Store the dictionary items as variables
-    item= i["Item"]
+    # 7. Store the dictionary items as variables 
+    item_name= i["Item name"]
     price= i["Price"]
     quantity= i["Quantity"]
     
-# Got this from previous part in code.
+# Code influenced by starter code on current lines 105-107 and 116-118
     # 8. Calculate the number of spaces for formatted printing
-    num_item_spaces = 26 - len(item)
+    num_item_spaces = 26 - len(item_name)
     num_price_spaces=6-len(str(price))
 
     # 9. Create space strings
     item_spaces = " " * num_item_spaces
     price_spaces=" " *num_price_spaces
     # 10. Print the item name, price, and quantity
-    print(f"{item}{item_spaces}| ${price}{price_spaces}| {quantity}")
+    print(f"{item_name}{item_spaces}| ${price}{price_spaces}| {quantity}")
 
 # 11. Calculate the cost of the order using list comprehension
 # Multiply the price by quantity for each item in the order list, then sum()
 # and print the prices.
-total_price=sum( [ i["Price"] * i[ "Quantity" ] for i in order ] ) #guest list example
+
+#Influenced by Week2-Lesson3-11-Stu_Guest_List line 62
+total_price=sum( [ i["Price"] * i[ "Quantity" ] for i in order ] ) 
 
 print(f"""
 ----------------------------------------------\n
